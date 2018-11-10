@@ -15,6 +15,13 @@ export const TopNav: React.SFC<NavProps> = (props) => (
                 </Navbar.Brand>
             </LinkContainer>
         </Navbar.Header>
+        <Nav>
+            <LinkContainer to="/create/">
+                <NavItem>
+                    New Campaign
+                </NavItem>
+            </LinkContainer>
+        </Nav>
         <Nav pullRight={true}>
             <NavItem>
                 User 1
