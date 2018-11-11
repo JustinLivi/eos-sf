@@ -7,13 +7,13 @@ using namespace eosio;
 
 CONTRACT pactcontract : public eosio::contract
 {
- private:
+  private:
 	struct pact
 	{
-		uint64_t unique_id = -1;			// this is a uuid
-		uint64_t activated_times = 0;		// number of times this pact was activated
-		uint64_t complete_threshold = 1; // number of times before this pact is completed
-		std::string name;						// the name of this pact
+		uint64_t unique_id = -1;
+		uint64_t activated_times = 0;
+		uint64_t complete_threshold = 1;
+		std::string name;
 
 		auto is_active() const { return activated_times < complete_threshold; }
 	};
@@ -43,12 +43,12 @@ CONTRACT pactcontract : public eosio::contract
 	typedef eosio::multi_index<"users"_n, user> users_table;
 	users_table _users;
 
- public:
+  public:
 	using contract::contract;
 
 	// constructor
 	pactcontract(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
-																								 _users(receiver, receiver.value) {}
+																		  _users(receiver, receiver.value) {}
 
 	ACTION newpact(name user, std::string name, uint64_t complete_threshold)
 	{
@@ -62,42 +62,33 @@ CONTRACT pactcontract : public eosio::contract
 		{
 			users.emplace(user, [&](auto &u) {
 				u.key = user;
-				u.active_pacts.push_back(createpact(
-               user, u.pact_counter++, name, complete_threshold
-            ));
+				u.active_pacts.push_back(createpact(user, u.pact_counter++, name, complete_threshold));
 			});
 		}
 		else
 		{
 			users.modify(u, _self, [&](auto &u) {
-				u.active_pacts.push_back(createpact(
-               user, u.pact_counter++, name, complete_threshold
-            ));
+				u.active_pacts.push_back(createpact(user, u.pact_counter++, name, complete_threshold));
 			});
 		}
 	}
 
-   pact createpact(name user, uint64_t pact_id, std::string name, uint64_t complete_threshold) {
-      pact new_pact;
+	pact createpact(name user, uint64_t pact_id, std::string name, uint64_t complete_threshold)
+	{
+		pact new_pact;
 		new_pact.unique_id = pact_id;
 		new_pact.name = name;
 		new_pact.complete_threshold = complete_threshold;
 
-      action(
-         permission_level{get_self(),"active"_n},
-         get_self(),
-         "pactcreated"_n,
-         std::make_tuple(user, pact_id)
-         ).send();
-      
-      return new_pact;
-   }
+		action(
+			permission_level{get_self(), "active"_n},
+			get_self(),
+			"pactcreated"_n,
+			std::make_tuple(user, pact_id))
+			.send();
 
-   // this action only exists to notify UI of creation of pacts
-   ACTION pactcreated(name user, uint64_t pact_id)
-   {
-      require_recipient(user);
-   }
+		return new_pact;
+	}
 
 	ACTION activatepact(name user, uint64_t pact_id)
 	{
@@ -111,19 +102,39 @@ CONTRACT pactcontract : public eosio::contract
 		users.modify(u, _self, [&](auto &u) {
 			auto i = find_pact(u.active_pacts, pact_id);
 			eosio_assert(i != INDEX_NONE, "Failed to find pact to activate");
-			
-         auto pact = u.active_pacts[i];
-         pact.activated_times++;
 
-         if(pact.activated_times == pact.complete_threshold) {
-            u.active_pacts.erase(u.active_pacts.begin() + i);
-            u.completed_pacts.push_back(pact);
-			   print("Activating the pact caused it to complete");
-         } else {
-			   print("Pact successfully activated");
-         }
+			auto pact = u.active_pacts[i];
+			pact.activated_times++;
+
+			if (pact.activated_times >= pact.complete_threshold)
+			{
+				u.active_pacts.erase(u.active_pacts.begin() + i);
+
+            action(
+               permission_level{get_self(), "active"_n},
+               get_self(),
+               "pactcompleted"_n,
+               std::make_tuple(user, pact.unique_id))
+               .send();
+
+				print("Activating the pact caused it to complete");
+			}
+			else
+			{
+				print("Pact successfully activated");
+			}
 		});
+	}
+   
+   // these action only exists to notify UI of creation of pacts
+	ACTION pactcreated(name user, uint64_t pact_id)
+	{
+		require_recipient(user);
+	}
+	ACTION pactcompleted(name user, uint64_t pact_id)
+	{
+		require_recipient(user);
 	}
 };
 
-EOSIO_DISPATCH(pactcontract, (newpact)(pactcreated)(activatepact))
+EOSIO_DISPATCH(pactcontract, (newpact)(pactcreated)(activatepact)(pactcompleted))
