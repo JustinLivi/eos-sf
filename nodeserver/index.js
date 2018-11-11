@@ -23,13 +23,13 @@ const owner = 'pactacc';
 const creator = 'useraaaaaaaa';
 
 app.use(cors());
-app.post('/:creator/:campaignId', async (req, res) => {
+app.post('/:user/:pactId', async (req, res) => {
   try {
     const result = shell.exec(
-      `docker exec eosio /opt/eosio/bin/cleos --url http://127.0.0.1:8888 push action pactacc increment '${JSON.stringify(
+      `docker exec eosio /opt/eosio/bin/cleos --url http://127.0.0.1:8888 push action pactacc activatepact '${JSON.stringify(
         {
-          creator: req.params.creator,
-          campaign_id: req.params.campaignId
+          user: req.params.user,
+          pact_id: req.params.pactId
         }
       )}' -p pactacc@active`
     );
