@@ -11,6 +11,7 @@ import './styles/App.css';
 export const App: React.SFC<{}> = () => (
     <Router>
         <React.Fragment>
+            <div className="nav-shadow" />
             <TopNav />
             <Route path="/browse/" component={Browse} />
             <Route path="/active/" component={Active} />
