@@ -14,6 +14,10 @@ body {
   transform-style: preserve-3d;
 }
 
+.pagination-bottom {
+  display: none;
+}
+
 h1,
 h2,
 h3,
