@@ -4,7 +4,7 @@ import ReactDataGrid from 'react-data-grid';
 import { Campaign } from './Store';
 
 export interface CampaignTableProps {
-  data: Campaign[];
+  data: { active_campaigns: Campaign[]; }
 }
 
 export const CampaignTable: React.SFC<CampaignTableProps> = ({ data }) => (
@@ -14,7 +14,7 @@ export const CampaignTable: React.SFC<CampaignTableProps> = ({ data }) => (
       { key: 'target_users', name: 'Target Users' },
       { key: 'activated_users', name: 'Activated Users' }
     ]}
-    rowGetter={(index: number) => data[index]}
-    rowsCount={data.length}
+    rowGetter={(index: number) => data.active_campaigns[index]}
+    rowsCount={data.active_campaigns.length}
   />
 );

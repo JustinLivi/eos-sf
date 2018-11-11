@@ -90,14 +90,14 @@ export class CreateCampaign extends React.Component<
           actions: [
             {
               account: owner,
-              name: 'addcreator',
+              name: 'newcampaign',
               authorization: [
                 {
                   actor: creator,
                   permission: 'active'
                 }
               ],
-              data: {creator: creator}
+              data: {creator: creator, campaign_name: this.state.formValues.AdName, target_users: this.state.formValues.ConversionName}
             }
           ]
         },

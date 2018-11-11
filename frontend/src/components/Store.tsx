@@ -41,7 +41,6 @@ export class Store<DataType> extends React.Component<
   }
 
   fetch() {
-    // TODO: make this work
     const rpc = new JsonRpc(endpoint);
     rpc
       .get_table_rows({
@@ -51,7 +50,7 @@ export class Store<DataType> extends React.Component<
         table: 'creators', // name of the table as specified by the contract abi
         limit: 100
       })
-      .then(result => console.log(result.rows.toString()));
+      .then(result => this.setState({data: result.rows[0]}));
   }
 
   componentDidMount() {
@@ -59,7 +58,7 @@ export class Store<DataType> extends React.Component<
   }
 
   componentDidUpdate() {
-    this.fetch();
+    //this.fetch();
   }
 
   render() {

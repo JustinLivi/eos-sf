@@ -32,7 +32,7 @@ export class Active extends React.Component<ActiveProps<DataType>> {
             }))
           }}
         />
-        <CampaignTable data={data.active_campaigns} />
+        <CampaignTable data={data} />
       </MainLayout>
     );
   }
