@@ -49,9 +49,9 @@ export class CreateCampaign extends React.Component<
 
   validateFields(fields: Partial<CreateFormFields>) {
     return validate(fields, {
-      AdName: { presence: true },
-      ConversionName: { presence: true },
-      ConversionType: { presence: true },
+      AdName: { presence: { allowEmpty: false } },
+      ConversionName: { presence: { allowEmpty: false } },
+      ConversionType: { presence: { allowEmpty: false } },
     });
   }
 

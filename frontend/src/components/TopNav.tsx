@@ -11,7 +11,7 @@ export interface NavProps {}
 export const TopNav: React.SFC<NavProps> = props => (
   <Navbar fluid={true}>
     <Navbar.Header>
-      <LinkContainer to="/browse/">
+      <LinkContainer to="/active/">
         <Navbar.Brand>
           <img src={logoPng} className="top-nav-logo" />
         </Navbar.Brand>
