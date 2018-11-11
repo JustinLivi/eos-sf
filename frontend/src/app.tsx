@@ -16,13 +16,39 @@ export const defaultData: DataType = {
 export const App: React.SFC<{}> = () => (
   <Router>
     <React.Fragment>
-      <div className='nav-shadow' />
+      <div className="nav-shadow" />
       <TopNav />
       <React.Fragment>
-        <Route path='/active/' component={() => <Active />} />
-        <Route path='/completed/' component={() => <Completed />} />
-        <Route path='/create/' component={() => <CreateCampaign />} />
-        <Route exact path='/' render={() => <Redirect to='/active/' />} />
+        <Route path="/active/" component={() => <Active />} />
+        <Route path="/completed/" component={() => <Completed />} />
+        <Route path="/create/" component={() => <CreateCampaign />} />
+        <Route exact path="/" render={() => <Redirect to="/active/" />} />
+        <Route
+          path="/create/"
+          component={() => (
+            <div className="slide-holder">
+              <div className="slide-inner">
+                <div className="slide-title">
+                  <h1 className="client">Client Interface</h1>
+                </div>
+                <div className="slide-accent" />
+              </div>
+            </div>
+          )}
+        />
+        <Route
+          path="/task/"
+          component={() => (
+            <div className="slide-holder">
+              <div className="slide-inner">
+                <div className="slide-title">
+                  <h1 className="contractor">Contractor Interface</h1>
+                </div>
+                <div className="slide-accent" />
+              </div>
+            </div>
+          )}
+        />
       </React.Fragment>
     </React.Fragment>
   </Router>
