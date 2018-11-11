@@ -78,7 +78,7 @@ public:
 	{
 		users_table users(_code, _code.value);
 		auto user = users.find(creator.value);
-		eosio_assert(user != users.end(), "Cannot create a new campaign before adding a cretor to the contract");
+		eosio_assert(user != users.end(), "Cannot create a new bounty before adding a cretor to the contract");
 
 		users.modify(user, _self, [&](auto &s) {
 			campaign new_campaign;

@@ -127,7 +127,7 @@ form .btn-default {
   letter-spacing: 0.5rem;
   color: #b6f7c1;
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 600;
   transition: all 0.5s ease;
 }
 
@@ -138,6 +138,7 @@ form .btn-default span {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+  font-weight: 500;
   color: #b6f7c1;
 }
 

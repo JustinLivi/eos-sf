@@ -11,15 +11,15 @@ export interface NavProps {}
 export const TopNav: React.SFC<NavProps> = props => (
   <Navbar fluid={true} fixedTop={true}>
     <Navbar.Header>
-      <LinkContainer to='/active/'>
+      <LinkContainer to="/active/">
         <Navbar.Brand>
-          <img src={logoPng} className='top-nav-logo' />
+          <img src={logoPng} className="top-nav-logo" />
         </Navbar.Brand>
       </LinkContainer>
     </Navbar.Header>
     <Nav>
-      <LinkContainer to='/create/'>
-        <NavItem>New Campaign</NavItem>
+      <LinkContainer to="/create/">
+        <NavItem>New Bounty</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight={true}>

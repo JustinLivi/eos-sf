@@ -20,7 +20,17 @@ export class Active extends React.Component<ActiveProps<DataType>> {
     const { data } = this.props;
     return (
       <MainLayout activePage={Pages.activeCampaigns}>
+        <div className="eos-header-holder-small">
+          <h1 className="header">Bounty Dashboard</h1>
+        </div>
         <Line
+          options={
+            {
+              // animation: {
+              //   duration: 0
+              // }
+            }
+          }
           data={{
             labels: [],
             datasets: map(data.active_campaigns, row => ({
@@ -32,6 +42,9 @@ export class Active extends React.Component<ActiveProps<DataType>> {
             }))
           }}
         />
+        <div className="eos-header-holder-small">
+          <h1 className="header">My Active Bounties</h1>
+        </div>
         <CampaignTable data={data.active_campaigns} />
       </MainLayout>
     );
