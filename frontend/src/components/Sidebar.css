@@ -1,40 +1,47 @@
 .side-shadow {
-    width: 20rem;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-shadow: 0px 0px 30px #000;
+  width: 20rem;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 30px #000;
 }
 
 .nav-holder {
-    padding: 0;
-    height: 93vh;
-    box-shadow: 0px 30px 30px #000;  
+  padding: 0;
+  height: 100%;
+  min-height: 92vh;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0px 30px 30px #000;
 }
 .nav-holder .list-group {
-    border: none;
-    border-radius: 0;
-    background-color: #373540;
-    height: 100%;
+  border: none;
+  border-radius: 0;
+  background-color: #2a2833;
+  height: 100%;
 }
 .nav-holder .list-group .list-group-item {
-    background-color: rgba(0,0,0,0);
-    border: none;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    color: #B6F7C1;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  color: #b6f7c1;
 }
 
 .nav-holder .list-group .list-group-item:first-child {
-    background-color: #63686E;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.nav-holder .list-group .list-group-item:last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .nav-holder .list-group .list-group-item.active,
 .nav-holder .list-group .list-group-item:hover {
-    color: #fff;
-    background-color: #2A2833;
+  color: #fff;
+  background-color: #63686e;
 }

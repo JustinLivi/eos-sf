@@ -1,7 +1,10 @@
 .page-main-body {
   background-image: url('../media/bg.jpg');
   background-size: cover;
-  min-height: 93vh;
+  min-height: 92vh;
+  top: 8vh;
+  position: absolute;
+  width: 100%;
 }
 
 .main-content-holder {
