@@ -1,29 +1,28 @@
 .eos-header-holder {
-    text-align: center;
-    height: 12rem;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  text-align: center;
+  height: 12rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .eos-header-holder .header {
-    line-height: 90%;
-    margin-top: 0.8rem;
-    margin-bottom: 1rem;
+  line-height: 90%;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-
 .eos-header-holder .bracket {
-    background-image: url('../media/header-holder.png');
-    height: calc(25rem*0.14);
-    width: 25rem;
-    background-size: 100% 100%;
+  background-image: url('../media/header-holder.png');
+  height: calc(25rem * 0.14);
+  width: 25rem;
+  background-size: 100% 100%;
 }
 
 .eos-header-holder .bracket.bottom-bracket {
-    transform: rotateX(180deg);
+  transform: rotateX(180deg);
 }
