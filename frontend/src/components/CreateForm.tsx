@@ -25,7 +25,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
       <FormControlWithValidation
         {...props}
         fieldId="AdName"
-        fieldLabel={'Ad Name'}
+        fieldLabel={'Task Name'}
         inputProps={{
           type: 'text'
         }}

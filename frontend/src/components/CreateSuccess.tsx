@@ -19,14 +19,14 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
   <React.Fragment>
     <div className="eos-header-holder">
       <div className="bracket top-bracket" />
-      <h1 className="header">Campaign Created</h1>
+      <h1 className="header">Bounty Created</h1>
       <div className="bracket bottom-bracket" />
     </div>
     <Form horizontal={true}>
       <TextWithValidation
         {...props}
         fieldId="AdName"
-        fieldLabel={'Ad Name'}
+        fieldLabel={'Task Name'}
         inputProps={{
           type: 'text'
         }}
