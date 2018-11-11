@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { Api, JsonRpc, JsSignatureProvider, RpcError } from 'eosjs';
+
+const owner = "adchainacc";
+const endpoint = 'http://localhost:8888';
 
 export interface Campaign {
   unique_id: number;
@@ -38,16 +42,16 @@ export class Store<DataType> extends React.Component<
 
   fetch() {
     // TODO: make this work
-    //  const rpc = new JsonRpc(endpoint);
-    // rpc
-    //   .get_table_rows({
-    //     json: true,
-    //     code: 'eosio', // contract who owns the table
-    //     scope: 'eosio', // scope of the table
-    //     table: 'creators', // name of the table as specified by the contract abi
-    //     limit: 100
-    //   })
-    //   .then(result => this.setState({ noteTable: result.rows }));
+    const rpc = new JsonRpc(endpoint);
+    rpc
+      .get_table_rows({
+        json: true,
+        code: owner, // contract who owns the table
+        scope: owner, // scope of the table
+        table: 'creators', // name of the table as specified by the contract abi
+        limit: 100
+      })
+      .then(result => console.log(result.rows.toString()));
   }
 
   componentDidMount() {

@@ -38,7 +38,7 @@ cleos wallet import -n eosiomain --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4
 
 echo "=== setup wallet: adchainwal ==="
 # key for eosio account and export the generated password to a file for unlocking wallet later
-cleos wallet create -n adchainwal --to-console | tail -1 | sed -e 's/^"//' -e 's/"$//' > adchain_wallet_password.txt
+cleos wallet create -n adchainwal --to-console | tail -1 | sed -e 's/^"//' -e 's/"$//' > notechain_wallet_password.txt
 # Owner key for adchainwal wallet
 cleos wallet import -n adchainwal --private-key 5JpWT4ehouB2FF9aCfdfnZ5AwbQbTtHBAwebRXt94FmjyhXwL4K
 # Active key for adchainwal wallet
@@ -56,7 +56,7 @@ echo "=== deploy smart contract ==="
 # $2 account holder name of the smart contract
 # $3 wallet for unlock the account
 # $4 password for unlocking the wallet
-deploy_contract.sh adchain adchainacc adchainwal $(cat adchain_wallet_password.txt)
+deploy_contract.sh adchain adchainacc adchainwal $(cat notechain_wallet_password.txt)
 
 echo "=== create user accounts ==="
 # script for create data into blockchain
