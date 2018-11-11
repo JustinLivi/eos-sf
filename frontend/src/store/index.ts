@@ -11,7 +11,7 @@ export const store = createStore(
     campaigns: {
       cacheStatus: CacheStatus.BEHIND,
       data: {
-        active_campaigns: []
+        active_pacts: []
       }
     }
   },
