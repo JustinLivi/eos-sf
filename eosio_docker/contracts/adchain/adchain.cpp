@@ -44,11 +44,9 @@ private:
 	TABLE creators
 	{
 		name creator;
-		uint64_t campaigns_counter;
+		uint64_t campaigns_counter = 0;
 		std::vector<campaign> active_campaigns; // has many campaigns
 
-		// constructor - set counter to zero
-		creators() : campaigns_counter(0) {}
 		auto primary_key() const { return creator.value; }
 	};
 
@@ -62,26 +60,22 @@ public:
 
 	// constructor
 	adchain(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
-																																	 _users(receiver, receiver.value) {}
+		_users(receiver, receiver.value) {}
 
 	ACTION addcreator(name creator)
 	{
-		require_auth(creator);
-
 		users_table users(_code, _code.value);
 		auto user = users.find(creator.value);
 		eosio_assert(user == users.end(), "Cannot add a creator that was already added");
 
 		// update the table to include a new creator
-		users.emplace(_self, [&](auto &s) {
+		users.emplace(creator, [&](auto &s) {
 			s.creator = creator;
 		});
 	};
 
 	ACTION newcampaign(name creator, uint64_t target_users, asset user_reward)
 	{
-		require_auth(creator);
-
 		users_table users(_code, _code.value);
 		auto user = users.find(creator.value);
 		eosio_assert(user != users.end(), "Cannot create a new campaign before adding a cretor to the contract");

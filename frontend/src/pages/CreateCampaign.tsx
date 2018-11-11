@@ -1,4 +1,5 @@
 import './CreateCampaign.css';
+import { Api, JsonRpc, JsSignatureProvider, RpcError } from 'eosjs';
 
 import * as React from 'react';
 import { BarLoader } from 'react-spinners';
@@ -8,6 +9,11 @@ import { CreateForm, CreateFormFields } from '../components/CreateForm';
 import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
+
+const owner = "adchainacc";
+const creator = "useraaaaaaaa";
+const endpoint = 'http://localhost:8888';
+const privateKey = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
 
 export enum CreateCampaignStates {
   Unsubmitted,
@@ -67,15 +73,55 @@ export class CreateCampaign extends React.Component<
         ...prev,
         state: CreateCampaignStates.Submitting,
       }));
-      // TODO: replace with api call
-      await new Promise(resolve => {
-        window.setTimeout(resolve, 1000);
-      });
-      this.setState(prev => ({
-        ...prev,
-        state: CreateCampaignStates.Submitted,
-      }));
     }
+
+    // TODO: replace with api call
+    const rpc = new JsonRpc(endpoint);
+    const signatureProvider = new JsSignatureProvider([privateKey]);
+    const api = new Api({
+      rpc,
+      signatureProvider,
+      textDecoder: new TextDecoder(),
+      textEncoder: new TextEncoder()
+    });
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: owner,
+              name: 'addcreator',
+              authorization: [
+                {
+                  actor: creator,
+                  permission: 'active'
+                }
+              ],
+              data: {creator: creator}
+            }
+          ]
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30
+        }
+      );
+    
+      console.log(result);
+    } catch (e) {
+      console.log('Caught exception: ' + e);
+      if (e instanceof RpcError) {
+        console.log(JSON.stringify(e.json, null, 2));
+      }
+    }
+    
+    await new Promise(resolve => {
+      window.setTimeout(resolve, 1000);
+    });
+    this.setState(prev => ({
+      ...prev,
+      state: CreateCampaignStates.Submitted,
+    }));
   }
 
   handleFieldChange(fieldId: keyof CreateFormFields, value: any) {
