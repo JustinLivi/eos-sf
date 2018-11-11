@@ -5,9 +5,9 @@ import { CreateFormProps, Input } from './Input';
 
 export const CreateForm: React.SFC<CreateFormProps> = (props) => (
     <Form horizontal={true}>
-        <Input {...props} fieldId="AdName" />
-        <Input {...props} fieldId="ConversionName" />
-        <Input {...props} fieldId="ConversionType" />
+        <Input {...props} fieldId="AdName" fieldLabel={"Ad Name"} />
+        <Input {...props} fieldId="ConversionName" fieldLabel={"Conversion Name"} />
+        <Input {...props} fieldId="ConversionType" fieldLabel={"Conversion Type"} />
         <FormGroup>
             <Col
                 sm={9}

@@ -23,9 +23,11 @@ export interface CreateFormProps {
 
 export interface InputProps extends CreateFormProps {
     fieldId: keyof CreateFormFields; 
+    fieldLabel: string;
 }
 
 export const Input: React.SFC<InputProps> = ({
+    fieldLabel,
     fieldId,
     validationState,
     onChange,
@@ -37,7 +39,7 @@ export const Input: React.SFC<InputProps> = ({
             componentClass={ControlLabel}
             sm={3}
         >
-            Ad Name
+            {fieldLabel}
         </Col>
         <Col sm={9}>
             <FormControl
