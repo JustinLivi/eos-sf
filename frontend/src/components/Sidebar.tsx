@@ -17,9 +17,6 @@ export interface SidebarProps {
 
 export const Sidebar: React.SFC<SidebarProps> = ({ activePage }) => (
   <ListGroup>
-    <LinkContainer to="/browse/">
-      <ListGroupItem active={activePage === Pages.browse}>Browse</ListGroupItem>
-    </LinkContainer>
     <LinkContainer to="/active/">
       <ListGroupItem active={activePage === Pages.activeCampaigns}>
         Active Campaigns

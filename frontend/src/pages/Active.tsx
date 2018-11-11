@@ -1,18 +1,22 @@
 import * as React from 'react';
 
 import { Pages } from '../components/Sidebar';
+import { Storable } from '../components/Store';
 import { MainLayout } from '../layouts/Main';
 
 export interface Campaign {}
 
-export interface ActiveProps {}
+export interface ActiveProps<DataType> extends Storable<DataType> {}
 
 export interface ActiveState {
   campaigns: Campaign[];
 }
 
-export class Active extends React.Component<ActiveProps, ActiveState> {
-  constructor(props: ActiveProps) {
+export class Active<DataType> extends React.Component<
+  ActiveProps<DataType>,
+  ActiveState
+> {
+  constructor(props: ActiveProps<DataType>) {
     super(props);
     this.state = {
       campaigns: [],
