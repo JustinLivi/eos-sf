@@ -15,41 +15,41 @@ export type CreateFormProps = FormProps<CreateFormFields>;
 
 export const CreateForm: React.SFC<CreateFormProps> = props => (
   <React.Fragment>
-    <div className="eos-header-holder">
-      <div className="bracket top-bracket" />
-      <h1 className="header">Create Bounty</h1>
-      <div className="bracket bottom-bracket" />
+    <div className='eos-header-holder'>
+      <div className='bracket top-bracket' />
+      <h1 className='header'>Create Bounty</h1>
+      <div className='bracket bottom-bracket' />
     </div>
     <Form horizontal={true}>
       <FormControlWithValidation
         {...props}
-        fieldId="AdName"
-        fieldLabel={'Task Name'}
+        fieldId='AdName'
+        fieldLabel={'Pact Name'}
         inputProps={{
           type: 'text'
         }}
       />
       <FormControlWithValidation
         {...props}
-        fieldId="ConversionName"
-        fieldLabel={'Conversion Goal'}
+        fieldId='ConversionName'
+        fieldLabel={'Success Threshold'}
         inputProps={{
           type: 'text'
         }}
       />
       <FormControlWithValidation
         {...props}
-        fieldId="ConversionType"
-        fieldLabel={'Conversion Type'}
+        fieldId='ConversionType'
+        fieldLabel={'Reward Type'}
         inputProps={{
           type: 'text'
         }}
       />
       <FormGroup>
-        <Col sm={12} className="button-holder">
+        <Col sm={12} className='button-holder'>
           <Button onClick={props.onSubmit} disabled={props.disabled}>
             <span>Create </span>
-            <img src={buttonArrow} className="cta-arrow" />
+            <img src={buttonArrow} className='cta-arrow' />
           </Button>
         </Col>
       </FormGroup>

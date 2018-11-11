@@ -11,7 +11,7 @@ import { CreateCampaign } from './pages/CreateCampaign';
 import { DataType } from './store/stateDefinition';
 
 export const defaultData: DataType = {
-  active_campaigns: []
+  active_pacts: []
 };
 
 export const App: React.SFC<{}> = () => (

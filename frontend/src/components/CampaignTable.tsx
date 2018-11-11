@@ -6,16 +6,16 @@ import ReactTable from 'react-table';
 import { Campaign } from '../store/stateDefinition';
 
 export interface CampaignTableProps {
-  data: { active_campaigns: Campaign[] };
+  data: { active_pacts: Campaign[] };
 }
 
 export const CampaignTable: React.SFC<CampaignTableProps> = ({ data }) => (
   <ReactTable
-    data={data.active_campaigns}
+    data={data.active_pacts}
     columns={[
       { accessor: 'unique_id', Header: 'ID' },
-      { accessor: 'target_users', Header: 'Target Metric' },
-      { accessor: 'activated_users', Header: 'Activated Metric' }
+      { accessor: 'complete_threshold', Header: 'Target Metric' },
+      { accessor: 'activated_times', Header: 'Activated Metric' }
     ]}
     defaultPageSize={10}
     className='-striped -highlight'

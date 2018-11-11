@@ -103,8 +103,8 @@ CONTRACT pactcontract : public eosio::contract
 			auto i = find_pact(u.active_pacts, pact_id);
 			eosio_assert(i != INDEX_NONE, "Failed to find pact to activate");
 
-			auto pact = u.active_pacts[i];
-			pact.activated_times++;
+      u.active_pacts[i].activated_times++;
+      auto pact = u.active_pacts[i];
 
 			if (pact.activated_times >= pact.complete_threshold)
 			{

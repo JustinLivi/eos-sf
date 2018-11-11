@@ -7,7 +7,7 @@ export const campaigns = (
   state: StoreState = {
     cacheStatus: CacheStatus.BEHIND,
     data: {
-      active_campaigns: []
+      active_pacts: []
     }
   },
   action: any
@@ -29,7 +29,7 @@ export const campaigns = (
         ...state,
         data: {
           cacheStatus: CacheStatus.UP_TO_DATE,
-          active_campaigns: action.data as Campaign[]
+          active_pacts: action.data as Campaign[]
         }
       };
     default:
