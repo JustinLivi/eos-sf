@@ -4,7 +4,7 @@ import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
 export const Completed = () => (
-    <MainLayout activePage={Pages.completedCampaigns}>
-        <div>Completed Campaigns</div>
-    </MainLayout>
+  <MainLayout activePage={Pages.completedCampaigns}>
+    <div>Completed Campaigns</div>
+  </MainLayout>
 );
