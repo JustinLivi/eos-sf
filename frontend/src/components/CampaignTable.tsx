@@ -1,22 +1,23 @@
-import * as React from 'react';
-import ReactDataGrid from 'react-data-grid';
-
-import { Campaign } from './Store';
-
 import './CampaignTable.css';
 
+import * as React from 'react';
+import ReactTable from 'react-table';
+
+import { Campaign } from '../store/stateDefinition';
+
 export interface CampaignTableProps {
-  data: { active_campaigns: Campaign[]; }
+  data: { active_campaigns: Campaign[] };
 }
 
 export const CampaignTable: React.SFC<CampaignTableProps> = ({ data }) => (
-  <ReactDataGrid
+  <ReactTable
+    data={data.active_campaigns}
     columns={[
-      { key: 'unique_id', name: 'ID' },
-      { key: 'target_users', name: 'Target Users' },
-      { key: 'activated_users', name: 'Activated Users' }
+      { accessor: 'unique_id', Header: 'ID' },
+      { accessor: 'target_users', Header: 'Target Metric' },
+      { accessor: 'activated_users', Header: 'Activated Metric' }
     ]}
-    rowGetter={(index: number) => data && data.active_campaigns ? data.active_campaigns[index] : null}
-    rowsCount={data && data.active_campaigns ? data.active_campaigns.length : 0}
+    defaultPageSize={10}
+    className='-striped -highlight'
   />
 );

@@ -1,19 +1,36 @@
 import { map } from 'lodash';
 import * as React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
+import { fetchTable, invalidateCache } from '../actions';
 import { CampaignTable } from '../components/CampaignTable';
 import { Pages } from '../components/Sidebar';
-import { DataType, Storable } from '../components/Store';
 import { MainLayout } from '../layouts/Main';
+import { CacheStatus, State, StoreState } from '../store/stateDefinition';
 
 export interface Campaign {}
 
-export interface ActiveProps<DataType> extends Storable<DataType> {}
+export interface ActiveProps {}
 
-export class Active extends React.Component<ActiveProps<DataType>> {
-  constructor(props: ActiveProps<DataType>) {
+export interface ActiveDispatchProps {
+  shouldInvalidateCache: () => void;
+  shouldFetchTable: () => void;
+}
+
+type AllProps = StoreState & ActiveDispatchProps & ActiveProps;
+
+export class UnboundActive extends React.Component<AllProps> {
+  constructor(props: AllProps) {
     super(props);
+  }
+
+  componentDidMount() {
+    const { shouldInvalidateCache, shouldFetchTable, cacheStatus } = this.props;
+    if (cacheStatus !== CacheStatus.FETCHING) {
+      shouldFetchTable();
+    }
   }
 
   render() {
@@ -23,7 +40,7 @@ export class Active extends React.Component<ActiveProps<DataType>> {
         <div className='eos-header-holder-small'>
           <h1 className='header'>Bounty Dashboard</h1>
         </div>
-        <Line
+        <Bar
           options={
             {
               // animation: {
@@ -33,13 +50,13 @@ export class Active extends React.Component<ActiveProps<DataType>> {
           }
           data={{
             labels: [],
-            datasets: data ? map(data.active_campaigns, row => ({
-              label: 'Daily Metrics',
+            datasets: map(data.active_campaigns, row => ({
+              label: row.campaign_name,
               borderColor: '#B6F7C1',
               borderWidth: 1,
               hoverBorderColor: '#B6F7C1',
-              data: [65, 59, 80, 81, 56, 55, 40]
-            })) : []
+              data: [row.activated_users]
+            }))
           }}
         />
         <div className='eos-header-holder-small'>
@@ -50,3 +67,21 @@ export class Active extends React.Component<ActiveProps<DataType>> {
     );
   }
 }
+
+const mapStateToProps = (state: State) => {
+  return state.campaigns;
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      shouldFetchTable: fetchTable,
+      shouldInvalidateCache: invalidateCache
+    },
+    dispatch
+  );
+
+export const Active = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UnboundActive);

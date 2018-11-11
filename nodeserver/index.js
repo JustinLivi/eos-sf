@@ -40,36 +40,6 @@ app.post('/:creator/:campaignId', async (req, res) => {
         }
       )}' -p adchainacc@active`
     );
-    // const result = shell.exec(
-    //   `cleos push action adchainacc increment ${JSON.stringify({
-    //     creator: req.params.creator,
-    //     campaign_id: req.params.campaignId
-    //   })}`
-    // );
-    // const result = await api.transact(
-    //   {
-    //     actions: [
-    //       {
-    //         account: 'adchainacc',
-    //         name: 'increment',
-    //         authorization: [
-    //           {
-    //             actor: req.params.creator,
-    //             permission: 'active'
-    //           }
-    //         ],
-    //         data: {
-    //           creator: req.params.creator,
-    //           campaign_id: req.params.campaignId
-    //         }
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     blocksBehind: 3,
-    //     expireSeconds: 30
-    //   }
-    // );
 
     console.log(result);
     res.send(result.stdout);
