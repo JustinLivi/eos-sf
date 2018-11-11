@@ -10,8 +10,9 @@ body, p, span, a {
 h1, h2, h3, h4 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.4rem;
+    letter-spacing: 0.5rem;
     color: #fff;
+    font-weight: 900;
 }
 
 /* document color */
