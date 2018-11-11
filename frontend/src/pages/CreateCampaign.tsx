@@ -2,9 +2,12 @@ import './CreateCampaign.css';
 
 import { Api, JsonRpc, JsSignatureProvider, RpcError } from 'eosjs';
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { BarLoader } from 'react-spinners';
+import { bindActionCreators, Dispatch } from 'redux';
 import { validate } from 'validate.js';
 
+import { invalidateCache } from '../actions';
 import { CreateForm, CreateFormFields } from '../components/CreateForm';
 import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
@@ -24,17 +27,23 @@ export enum CreateCampaignStates {
 
 export interface CreateCampaignProps {}
 
+export interface CreateCampaignDispatchProps {
+  shouldInvalidateCache: () => void;
+}
+
 export interface CreateCampaignState {
   state: CreateCampaignStates;
   formValues: CreateFormFields;
   validationState: CreateFormFields;
 }
 
-export class CreateCampaign extends React.Component<
-  CreateCampaignProps,
+type AllProps = CreateCampaignProps & CreateCampaignDispatchProps;
+
+export class UnboundCreateCampaign extends React.Component<
+  AllProps,
   CreateCampaignState
 > {
-  constructor(props: CreateCampaignProps) {
+  constructor(props: AllProps) {
     super(props);
     this.state = {
       state: CreateCampaignStates.Unsubmitted,
@@ -68,7 +77,7 @@ export class CreateCampaign extends React.Component<
   }
 
   async handleSubmit() {
-    // const { invalidateCache } = this.props;
+    const { shouldInvalidateCache } = this.props;
     const validationState = this.validateFields(this.state.formValues);
     if (validationState) {
       this.setState(prev => ({
@@ -122,6 +131,7 @@ export class CreateCampaign extends React.Component<
         state: CreateCampaignStates.Submitted
       }));
       console.log(result);
+      shouldInvalidateCache();
     } catch (e) {
       console.log('Caught exception: ' + e);
       if (e instanceof RpcError) {
@@ -181,3 +191,16 @@ export class CreateCampaign extends React.Component<
     );
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      shouldInvalidateCache: invalidateCache
+    },
+    dispatch
+  );
+
+export const CreateCampaign = connect(
+  undefined,
+  mapDispatchToProps
+)(UnboundCreateCampaign);
