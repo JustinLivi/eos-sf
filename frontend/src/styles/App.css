@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito|Oswald');
+
+
+/* global font rules */ 
+body, p, span, a {
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+}
+
+/* document color */
