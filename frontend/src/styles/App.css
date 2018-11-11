@@ -1,19 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|Oswald');
 
-
-/* global font rules */ 
-body, p, span, a {
-    font-family: 'Nunito', sans-serif;
-    color: #fff;
+/* global font rules */
+body,
+p,
+span,
+a {
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    color: #fff;
-    font-weight: 900;
+body {
+  background: #1e1c26 !important;
 }
-textarea, select, input, button { outline: none; }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: #fff;
+  font-weight: 900;
+}
+textarea,
+select,
+input,
+button {
+  outline: none;
+}
 
 /* document color */
