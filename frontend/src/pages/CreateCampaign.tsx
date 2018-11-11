@@ -2,8 +2,7 @@ import * as React from 'react';
 import { BarLoader } from 'react-spinners';
 import validate from 'validate.js';
 
-import { CreateForm } from '../components/CreateForm';
-import { CreateFormFields } from '../components/Input';
+import { CreateForm, CreateFormFields } from '../components/CreateForm';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
