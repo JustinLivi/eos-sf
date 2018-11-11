@@ -1,7 +1,7 @@
+import { JsonRpc } from 'eosjs';
 import * as React from 'react';
-import { Api, JsonRpc, JsSignatureProvider, RpcError } from 'eosjs';
 
-const owner = "adchainacc";
+const owner = 'adchainacc';
 const endpoint = 'http://localhost:8888';
 
 export interface Campaign {
@@ -50,7 +50,9 @@ export class Store<DataType> extends React.Component<
         table: 'creators', // name of the table as specified by the contract abi
         limit: 100
       })
-      .then(result => this.setState({data: result.rows[0]}));
+      .then(result =>
+        this.setState({ data: result.rows[0] || { active_campaigns: [] } })
+      );
   }
 
   componentDidMount() {

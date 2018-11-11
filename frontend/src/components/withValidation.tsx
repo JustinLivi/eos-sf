@@ -25,7 +25,7 @@ export interface InputProps {
 export function withValidation<InnerInputProps>(
   Input:
     | React.ComponentClass<InputProps & InnerInputProps>
-    | React.SFC<InputProps & InnerInputProps>,
+    | React.SFC<InputProps & InnerInputProps>
 ) {
   return class InputWithValidation<FormFields> extends React.Component<
     InputValidationProps<FormFields, InnerInputProps>
@@ -38,7 +38,7 @@ export function withValidation<InnerInputProps>(
         onChange,
         disabled,
         values,
-        inputProps,
+        inputProps
       } = this.props;
       let valid: 'success' | 'warning' | 'error' | null | undefined = null;
       if (validationState[fieldId]) {
@@ -57,7 +57,7 @@ export function withValidation<InnerInputProps>(
                 onChange(fieldId, (e.target as HTMLInputElement).value);
               }}
               disabled={disabled}
-              value={values[fieldId]}
+              value={values[fieldId] || ''}
               {...inputProps}
             />
             {validationState[fieldId] && (
