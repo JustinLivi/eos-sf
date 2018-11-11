@@ -36,6 +36,28 @@ export class Store<DataType> extends React.Component<
     this.state = { data: props.defaultData };
   }
 
+  fetch() {
+    // TODO: make this work
+    //  const rpc = new JsonRpc(endpoint);
+    // rpc
+    //   .get_table_rows({
+    //     json: true,
+    //     code: 'eosio', // contract who owns the table
+    //     scope: 'eosio', // scope of the table
+    //     table: 'creators', // name of the table as specified by the contract abi
+    //     limit: 100
+    //   })
+    //   .then(result => this.setState({ noteTable: result.rows }));
+  }
+
+  componentDidMount() {
+    this.fetch();
+  }
+
+  componentDidUpdate() {
+    this.fetch();
+  }
+
   render() {
     return this.props.render({ data: this.state.data });
   }

@@ -6,7 +6,7 @@
         {
             "label": "compile_contracts.sh",
             "type": "shell",
-            "command": "${workspaceRoot}/compile_contract.sh",
+            "command": "${workspaceRoot}/compile_adchain.sh",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

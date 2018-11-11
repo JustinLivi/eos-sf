@@ -6,7 +6,7 @@ using namespace eosio;
 
 #define INDEX_NONE -1
 
-// Smart Contract Name: notechain
+// Smart Contract Name: adchain
 // Table struct:
 //   notestruct: multi index table to store the notes
 //     prim_key(uint64): primary key
@@ -18,7 +18,6 @@ using namespace eosio;
 // Public actions:
 //   update => put the note into the multi-index table and sign by the given account
 
-// Replace the contract class name when you start your own project
 CONTRACT adchain : public eosio::contract
 {
 private:
@@ -36,7 +35,7 @@ private:
 	{
 		for(int64_t i = 0; i < campaigns.size(); ++i) {
 			if(campaigns[i].unique_id == campaign_id) {
-				 return i;
+				return i;
 			}
 		}
 		return INDEX_NONE;
