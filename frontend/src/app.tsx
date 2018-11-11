@@ -3,25 +3,11 @@ import './styles/App.css';
 import * as React from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 
-import { Store } from './components/Store';
+import { DataType, Store } from './components/Store';
 import { TopNav } from './components/TopNav';
 import { Active } from './pages/Active';
 import { Completed } from './pages/Completed';
 import { CreateCampaign } from './pages/CreateCampaign';
-
-export interface Campaign {
-  unique_id: number;
-  target_users: number;
-  activated_users: number;
-  user_reward: {
-    symbol: string;
-    amount: number;
-  };
-}
-
-export interface DataType {
-  active_campaigns: Campaign[];
-}
 
 export const defaultData: DataType = {
   active_campaigns: [

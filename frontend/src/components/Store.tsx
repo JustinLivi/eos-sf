@@ -1,5 +1,19 @@
 import * as React from 'react';
 
+export interface Campaign {
+  unique_id: number;
+  target_users: number;
+  activated_users: number;
+  user_reward: {
+    symbol: string;
+    amount: number;
+  };
+}
+
+export interface DataType {
+  active_campaigns: Campaign[];
+}
+
 export interface Storable<DataType> {
   data: DataType;
 }

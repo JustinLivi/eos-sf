@@ -9,16 +9,16 @@ import logoPng from '../media/logo.png';
 export interface NavProps {}
 
 export const TopNav: React.SFC<NavProps> = props => (
-  <Navbar fluid={true}>
+  <Navbar fluid={true} fixedTop={true}>
     <Navbar.Header>
-      <LinkContainer to="/active/">
+      <LinkContainer to='/active/'>
         <Navbar.Brand>
-          <img src={logoPng} className="top-nav-logo" />
+          <img src={logoPng} className='top-nav-logo' />
         </Navbar.Brand>
       </LinkContainer>
     </Navbar.Header>
     <Nav>
-      <LinkContainer to="/create/">
+      <LinkContainer to='/create/'>
         <NavItem>New Campaign</NavItem>
       </LinkContainer>
     </Nav>
