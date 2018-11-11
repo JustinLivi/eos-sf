@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 
-import { CreateFormProps, Input } from './Input';
+import { FormProps, Input } from './Input';
+
+export interface CreateFormFields {
+    AdName: any,
+    ConversionName: any,
+    ConversionType: any,
+}
+
+export type CreateFormProps = FormProps<CreateFormFields>;
 
 export const CreateForm: React.SFC<CreateFormProps> = (props) => (
     <Form horizontal={true}>

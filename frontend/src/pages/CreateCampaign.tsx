@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { BarLoader } from 'react-spinners';
 import validate from 'validate.js';
 
-import { CreateForm } from '../components/CreateForm';
-import { CreateFormFields } from '../components/Input';
+import { CreateForm, CreateFormFields } from '../components/CreateForm';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
@@ -89,6 +89,7 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
         return (
             <MainLayout activePage={Pages.creating}>
                 <h1>Create Campaign</h1>
+                <BarLoader loading={state === CreateCampaignStates.Submitting} />
                 <CreateForm
                     onSubmit={this.handleSubmit}
                     onChange={this.handleFieldChange}
@@ -96,9 +97,6 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
                     validationState={validationState}
                     values={formValues}
                 />
-                {
-                    state === CreateCampaignStates.Submitting && <div>submitting...</div>
-                }
             </MainLayout>
         );
     }
