@@ -49,7 +49,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
       <FormGroup>
         <Col sm={12} className="button-holder">
           <Button onClick={props.onSubmit} disabled={props.disabled}>
-            Create  <img src={buttonArrow} className="cta-arrow" />
+            <span>Create  </span><img src={buttonArrow} className="cta-arrow" />
           </Button>
         </Col>
       </FormGroup>

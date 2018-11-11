@@ -11,10 +11,10 @@
 }
 
 .eos-header-holder .header {
-  line-height: 90%;
+  line-height: 100%;
   margin-top: 0.8rem;
   margin-bottom: 1rem;
-  animation: fade-in 0.5s 1s linear both;
+  animation: fade-in 0.4s 0.7s ease-out both;
 }
 
 .eos-header-holder .bracket {
@@ -22,7 +22,7 @@
   height: calc(25rem * 0.14);
   width: 25rem;
   background-size: 100% 100%;
-  animation: open-top 0.5s 0.5s ease-out both;
+  animation: open-top 0.4s 0.5s ease-out both;
 }
 
 .eos-header-holder .bracket.bottom-bracket {
@@ -49,12 +49,12 @@
 
 @keyframes fade-in {
   from {
-    opacity: 0;
-    filter: blur(4px);
+    opacity: 0.5;
+    clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0% 50%);
   }
   to {
     opacity: 1;
-    filter: blur(0px);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
 
@@ -130,6 +130,17 @@ form .btn-default {
   font-weight: 900;
   transition: all 0.5s ease;
 }
+
+form .btn-default span {
+  font-size: 2rem;
+  font-weight: 900;
+
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: #b6f7c1;
+}
+
 form .btn-default:hover {
   background-color: rgba(0, 0, 0, 1);
   color: #fff;
@@ -138,7 +149,7 @@ form .btn-default:hover {
 form .btn-default .cta-arrow {
   height: 1.7rem;
   width: auto;
-  margin-top: -0.4rem;
+  margin-top: -0.5rem;
 }
 
 @media (min-width: 1200px) {
