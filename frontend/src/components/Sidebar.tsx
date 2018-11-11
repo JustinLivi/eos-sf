@@ -8,7 +8,7 @@ export enum Pages {
   browse = 'browse',
   activeCampaigns = 'active',
   completedCampaigns = 'completed',
-  creating = 'creating',
+  creating = 'creating'
 }
 
 export interface SidebarProps {
@@ -19,12 +19,12 @@ export const Sidebar: React.SFC<SidebarProps> = ({ activePage }) => (
   <ListGroup>
     <LinkContainer to="/active/">
       <ListGroupItem active={activePage === Pages.activeCampaigns}>
-        Active Campaigns
+        Active Bounties
       </ListGroupItem>
     </LinkContainer>
     <LinkContainer to="/completed/">
       <ListGroupItem active={activePage === Pages.completedCampaigns}>
-        Completed Campaigns
+        Completed Bounties
       </ListGroupItem>
     </LinkContainer>
   </ListGroup>
