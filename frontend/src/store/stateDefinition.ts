@@ -1,7 +1,7 @@
 export interface Campaign {
   unique_id: number;
-  target_users: number;
-  activated_users: number;
+  complete_threshold: number;
+  activated_times: number;
   campaign_name: string;
   user_reward: {
     symbol: string;
@@ -16,7 +16,7 @@ export enum CacheStatus {
 }
 
 export interface DataType {
-  active_campaigns: Campaign[];
+  active_pacts: Campaign[];
 }
 
 export interface Storable {

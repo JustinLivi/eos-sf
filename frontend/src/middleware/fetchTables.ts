@@ -21,7 +21,7 @@ export const fetchTableMiddleware: Middleware = store => next => action => {
       .then(result => {
         next({
           type: ActionTypes.TableFetched,
-          data: get(result, 'rows[0].active_campaigns', [])
+          data: get(result, 'rows[0].active_pacts', [])
         });
       });
   }

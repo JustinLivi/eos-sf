@@ -6,8 +6,8 @@ const endpoint = 'http://localhost:8888';
 
 export interface Campaign {
   unique_id: number;
-  target_users: number;
-  activated_users: number;
+  complete_threshold: number;
+  activated_times: number;
   user_reward: {
     symbol: string;
     amount: number;
@@ -15,7 +15,7 @@ export interface Campaign {
 }
 
 export interface DataType {
-  active_campaigns: Campaign[];
+  active_pacts: Campaign[];
 }
 
 export interface Storable<DataType> {
