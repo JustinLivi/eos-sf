@@ -1,7 +1,8 @@
 import * as React from 'react';
 import validate from 'validate.js';
 
-import { CreateForm, CreateFormFields } from '../components/CreateForm';
+import { CreateForm } from '../components/CreateForm';
+import { CreateFormFields } from '../components/Input';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
@@ -84,7 +85,7 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
     }
 
     render() {
-        const { state, validationState } = this.state;
+        const { state, validationState, formValues } = this.state;
         return (
             <MainLayout activePage={Pages.creating}>
                 <h1>Create Campaign</h1>
@@ -93,6 +94,7 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
                     onChange={this.handleFieldChange}
                     disabled={state !== CreateCampaignStates.Unsubmitted}
                     validationState={validationState}
+                    values={formValues}
                 />
                 {
                     state === CreateCampaignStates.Submitting && <div>submitting...</div>
