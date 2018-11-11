@@ -101,6 +101,7 @@ export class CreateCampaign extends React.Component<
           color={'#B6F7C1'}
           loading={state === CreateCampaignStates.Submitting}
         />
+        
         {state !== CreateCampaignStates.Submitted ? (
           <CreateForm
             onSubmit={this.handleSubmit}
@@ -117,6 +118,7 @@ export class CreateCampaign extends React.Component<
             values={formValues}
           />
         )}
+        <div className="form-shadow" />
       </MainLayout>
     );
   }

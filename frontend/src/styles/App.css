@@ -14,5 +14,6 @@ h1, h2, h3, h4 {
     color: #fff;
     font-weight: 900;
 }
+textarea, select, input, button { outline: none; }
 
 /* document color */

@@ -5,6 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { TextWithValidation } from './inputs/TextWithValidation';
 import { FormProps } from './withValidation';
 
+import buttonArrow from '../media/cta.png';
+
 export interface CreateSuccessFields {
   AdName: any;
   ConversionName: any;
@@ -14,7 +16,14 @@ export interface CreateSuccessFields {
 export type CreateSuccessProps = FormProps<CreateSuccessFields>;
 
 export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
+  <React.Fragment>
+  <div className="eos-header-holder">
+      <div className="bracket top-bracket" />
+      <h1 className="header">Campaign Created</h1>
+      <div className="bracket bottom-bracket" />
+    </div>
   <Form horizontal={true}>
+  
     <TextWithValidation
       {...props}
       fieldId="AdName"
@@ -40,11 +49,14 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
       }}
     />
     <FormGroup>
-      <Col sm={9} smOffset={3}>
+      <Col sm={12} className="button-holder">
         <LinkContainer to="/active/">
-          <Button>Continue</Button>
+          <Button>
+          <span>My Campaigns  </span><img src={buttonArrow} className="cta-arrow" />
+          </Button>
         </LinkContainer>
       </Col>
     </FormGroup>
   </Form>
+  </React.Fragment>
 );

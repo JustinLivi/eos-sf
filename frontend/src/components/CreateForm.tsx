@@ -4,6 +4,8 @@ import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 import { FormControlWithValidation } from './inputs/FormControlWithValidation';
 import { FormProps } from './withValidation';
 
+import buttonArrow from '../media/cta.png';
+
 export interface CreateFormFields {
   AdName: any;
   ConversionName: any;
@@ -45,9 +47,9 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
         }}
       />
       <FormGroup>
-        <Col sm={9} smOffset={3}>
+        <Col sm={12} className="button-holder">
           <Button onClick={props.onSubmit} disabled={props.disabled}>
-            Create
+            <span>Create  </span><img src={buttonArrow} className="cta-arrow" />
           </Button>
         </Col>
       </FormGroup>
