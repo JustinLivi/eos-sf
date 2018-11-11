@@ -6,6 +6,7 @@ import { Active } from './pages/Active';
 import { Browse } from './pages/Browse';
 import { Completed } from './pages/Completed';
 import { CreateCampaign } from './pages/CreateCampaign';
+import './styles/App.css';
 
 export const App: React.SFC<{}> = () => (
     <Router>
