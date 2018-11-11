@@ -2,6 +2,7 @@ const { Api, JsonRpc, JsSignatureProvider, RpcError } = require('eosjs');
 const express = require('express');
 const { TextDecoder, TextEncoder } = require('util');
 const shell = require('shelljs');
+var cors = require('cors');
 
 const app = express();
 
@@ -21,17 +22,9 @@ const api = new Api({
 const owner = 'adchainacc';
 const creator = 'useraaaaaaaa';
 
+app.use(cors());
 app.post('/:creator/:campaignId', async (req, res) => {
-  console.log(req.params);
   try {
-    console.log(
-      `docker exec eosio /opt/eosio/bin/cleos --url http://127.0.0.1:8888 push action adchainacc increment '${JSON.stringify(
-        {
-          creator: req.params.creator,
-          campaign_id: req.params.campaignId
-        }
-      )}' -p adchainacc@active`
-    );
     const result = shell.exec(
       `docker exec eosio /opt/eosio/bin/cleos --url http://127.0.0.1:8888 push action adchainacc increment '${JSON.stringify(
         {
