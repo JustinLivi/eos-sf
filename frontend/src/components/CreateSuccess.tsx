@@ -16,23 +16,23 @@ export type CreateSuccessProps = FormProps<CreateSuccessFields>;
 
 export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
   <React.Fragment>
-    <div className='eos-header-holder'>
-      <div className='bracket top-bracket' />
-      <h1 className='header'>Campaign Created</h1>
-      <div className='bracket bottom-bracket' />
+    <div className="eos-header-holder">
+      <div className="bracket top-bracket" />
+      <h1 className="header">Bounty Created</h1>
+      <div className="bracket bottom-bracket" />
     </div>
-    <Form horizontal={true}>
+    <Form horizontal={true} className="label-text-pair">
       <TextWithValidation
         {...props}
-        fieldId='AdName'
-        fieldLabel={'Ad Name'}
+        fieldId="AdName"
+        fieldLabel={'Task Name'}
         inputProps={{
           type: 'text'
         }}
       />
       <TextWithValidation
         {...props}
-        fieldId='ConversionName'
+        fieldId="ConversionName"
         fieldLabel={'Conversion Goal'}
         inputProps={{
           type: 'text'
@@ -40,18 +40,18 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
       />
       <TextWithValidation
         {...props}
-        fieldId='ConversionType'
+        fieldId="ConversionType"
         fieldLabel={'Conversion Type'}
         inputProps={{
           type: 'text'
         }}
       />
       <FormGroup>
-        <Col sm={12} className='button-holder'>
-          <LinkContainer to='/active/'>
+        <Col sm={12} className="button-holder">
+          <LinkContainer to="/active/">
             <Button>
               <span>My Bounties </span>
-              <img src={buttonArrow} className='cta-arrow' />
+              <img src={buttonArrow} className="cta-arrow" />
             </Button>
           </LinkContainer>
         </Col>
