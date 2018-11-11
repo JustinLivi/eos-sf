@@ -60,3 +60,36 @@
         filter: blur(0px);
     }
 }
+
+/* create campaign form fields */
+
+input.form-control[type="text"] {
+    appearance: none;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #ACC0CC;
+    transition: all 0.5s ease;
+}
+
+input.form-control:focus {
+    background-color: #000;
+    border-bottom: 1px solid #B6F7C1;
+    color: #B6F7C1;
+}
+input.form-control:focus + label {
+    
+    color: #B6F7C1;
+}
+
+form {
+    padding: 2rem;
+    background-color: #2A2833;
+    border-radius: 0.5rem;
+}
+
+.form-shadow {
+
+    box-shadow: 0px 10px 30px #000;
+}
