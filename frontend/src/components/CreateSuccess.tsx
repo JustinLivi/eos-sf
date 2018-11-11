@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 
-import { FormControlWithValidation } from './inputs/FormControlWithValidation';
+import { TextWithValidation } from './inputs/TextWithValidation';
 import { FormProps } from './withValidation';
 
 
@@ -15,7 +15,7 @@ export type CreateSuccessProps = FormProps<CreateSuccessFields>;
 
 export const CreateSuccess: React.SFC<CreateSuccessProps> = (props) => (
     <Form horizontal={true}>
-        <FormControlWithValidation
+        <TextWithValidation
             {...props}
             fieldId="AdName"
             fieldLabel={"Ad Name"}
@@ -23,7 +23,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = (props) => (
                 type: 'text'
             }}
         />
-        <FormControlWithValidation
+        <TextWithValidation
             {...props}
             fieldId="ConversionName"
             fieldLabel={"Conversion Name"}
@@ -31,7 +31,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = (props) => (
                 type: 'text'
             }}
         />
-        <FormControlWithValidation
+        <TextWithValidation
             {...props}
             fieldId="ConversionType"
             fieldLabel={"Conversion Type"}
@@ -48,7 +48,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = (props) => (
                     onClick={props.onSubmit}
                     disabled={props.disabled}
                 >
-                    Create
+                    Continue
                 </Button>
             </Col>
         </FormGroup>
