@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { TextWithValidation } from './inputs/TextWithValidation';
 import { FormProps } from './withValidation';
@@ -44,12 +45,11 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = (props) => (
                 sm={9}
                 smOffset={3}
             >
-                <Button
-                    onClick={props.onSubmit}
-                    disabled={props.disabled}
-                >
-                    Continue
-                </Button>
+                <LinkContainer to="/active/">
+                    <Button>
+                        Continue
+                    </Button>
+                </LinkContainer>
             </Col>
         </FormGroup>
     </Form>
