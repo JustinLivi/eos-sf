@@ -1,14 +1,13 @@
+import './CreateCampaign.css';
+
 import * as React from 'react';
 import { BarLoader } from 'react-spinners';
 import validate from 'validate.js';
 
 import { CreateForm, CreateFormFields } from '../components/CreateForm';
+import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
-
-import bracket from '../media/header-holder.png';
-
-import './CreateCampaign.css';
 
 export enum CreateCampaignStates {
     Unsubmitted,
@@ -49,7 +48,6 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
     }
 
     validateFields(fields: Partial<CreateFormFields>) {
-        console.log('called');
         return validate(fields, {
             AdName: { presence: true },
             ConversionName: { presence: true },
@@ -57,9 +55,8 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
         });
     }
 
-    handleSubmit() {
+    async handleSubmit() {
         const validationState = this.validateFields(this.state.formValues);
-        console.log(validationState);
         if (validationState) {
             this.setState((prev) => ({
                 ...prev,
@@ -69,6 +66,14 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
             this.setState((prev) => ({
                 ...prev,
                 state: CreateCampaignStates.Submitting,
+            }));
+            // TODO: replace with api call
+            await new Promise((resolve) => {
+                window.setTimeout(resolve, 1000);
+            });
+            this.setState((prev) => ({
+                ...prev,
+                state: CreateCampaignStates.Submitted,
             }));
         }
     }
@@ -92,19 +97,26 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
         const { state, validationState, formValues } = this.state;
         return (
             <MainLayout activePage={Pages.creating}>
-                <div className="eos-header-holder">
-                    <div className="bracket top-bracket"></div>
-                    <h1 className="header">Create Campaign</h1>
-                    <div className="bracket bottom-bracket"></div>
-                </div>
-                <BarLoader loading={state === CreateCampaignStates.Submitting} />
-                <CreateForm
-                    onSubmit={this.handleSubmit}
-                    onChange={this.handleFieldChange}
-                    disabled={state !== CreateCampaignStates.Unsubmitted}
-                    validationState={validationState}
-                    values={formValues}
+                <BarLoader
+                    color={'#B6F7C1'}
+                    loading={state === CreateCampaignStates.Submitting}
                 />
+                {
+                    state !== CreateCampaignStates.Submitted ?
+                    <CreateForm
+                        onSubmit={this.handleSubmit}
+                        onChange={this.handleFieldChange}
+                        disabled={state !== CreateCampaignStates.Unsubmitted}
+                        validationState={validationState}
+                        values={formValues}
+                    /> :
+                    <CreateSuccess
+                        onSubmit={this.handleSubmit}
+                        onChange={this.handleFieldChange}
+                        validationState={validationState}
+                        values={formValues}
+                    />
+                }
             </MainLayout>
         );
     }

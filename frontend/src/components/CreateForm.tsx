@@ -13,43 +13,50 @@ export interface CreateFormFields {
 export type CreateFormProps = FormProps<CreateFormFields>;
 
 export const CreateForm: React.SFC<CreateFormProps> = (props) => (
-    <Form horizontal={true}>
-        <FormControlWithValidation
-            {...props}
-            fieldId="AdName"
-            fieldLabel={"Ad Name"}
-            inputProps={{
-                type: 'text'
-            }}
-        />
-        <FormControlWithValidation
-            {...props}
-            fieldId="ConversionName"
-            fieldLabel={"Conversion Name"}
-            inputProps={{
-                type: 'text'
-            }}
-        />
-        <FormControlWithValidation
-            {...props}
-            fieldId="ConversionType"
-            fieldLabel={"Conversion Type"}
-            inputProps={{
-                type: 'text'
-            }}
-        />
-        <FormGroup>
-            <Col
-                sm={9}
-                smOffset={3}
-            >
-                <Button
-                    onClick={props.onSubmit}
-                    disabled={props.disabled}
+    <React.Fragment>
+        <div className="eos-header-holder">
+            <div className="bracket top-bracket"></div>
+            <h1 className="header">Create Campaign</h1>
+            <div className="bracket bottom-bracket"></div>
+        </div>
+        <Form horizontal={true}>
+            <FormControlWithValidation
+                {...props}
+                fieldId="AdName"
+                fieldLabel={"Ad Name"}
+                inputProps={{
+                    type: 'text'
+                }}
+            />
+            <FormControlWithValidation
+                {...props}
+                fieldId="ConversionName"
+                fieldLabel={"Conversion Name"}
+                inputProps={{
+                    type: 'text'
+                }}
+            />
+            <FormControlWithValidation
+                {...props}
+                fieldId="ConversionType"
+                fieldLabel={"Conversion Type"}
+                inputProps={{
+                    type: 'text'
+                }}
+            />
+            <FormGroup>
+                <Col
+                    sm={9}
+                    smOffset={3}
                 >
-                    Create
-                </Button>
-            </Col>
-        </FormGroup>
-    </Form>
+                    <Button
+                        onClick={props.onSubmit}
+                        disabled={props.disabled}
+                    >
+                        Create
+                    </Button>
+                </Col>
+            </FormGroup>
+        </Form>
+    </React.Fragment>
 );

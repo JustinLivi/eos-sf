@@ -4,7 +4,7 @@ import { Col, ControlLabel, FormControl, FormGroup, HelpBlock } from 'react-boot
 export interface FormProps<FormFields> {
     onChange: (fieldId: keyof FormFields, value: any) => void;
     onSubmit: () => void;
-    disabled: boolean;
+    disabled?: boolean;
     validationState: {
         [K in keyof FormFields]: string[] | null;
     };
