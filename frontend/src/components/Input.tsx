@@ -33,24 +33,32 @@ export const Input: React.SFC<InputProps> = ({
     onChange,
     disabled,
     values
-}) => (
-    <FormGroup validationState={validationState[fieldId] ? 'error' : 'success'} >
-        <Col
-            componentClass={ControlLabel}
-            sm={3}
-        >
-            {fieldLabel}
-        </Col>
-        <Col sm={9}>
-            <FormControl
-                type="text"
-                onChange={(e) => {
-                    onChange(fieldId, (e.target as HTMLInputElement).value)
-                }}
-                disabled={disabled}
-                value={values[fieldId]}
-            />
-            {validationState[fieldId] && <HelpBlock>{validationState[fieldId].join(' ')}</HelpBlock>}
-        </Col>
-    </FormGroup>
-);
+}) => {
+    let valid: "success" | "warning" | "error" | null | undefined = null;
+    if (validationState[fieldId]) {
+        valid = 'error';
+    } else if (values[fieldId]) {
+        valid = 'success';
+    }
+    return (
+        <FormGroup validationState={valid} >
+            <Col
+                componentClass={ControlLabel}
+                sm={3}
+            >
+                {fieldLabel}
+            </Col>
+            <Col sm={9}>
+                <FormControl
+                    type="text"
+                    onChange={(e) => {
+                        onChange(fieldId, (e.target as HTMLInputElement).value)
+                    }}
+                    disabled={disabled}
+                    value={values[fieldId]}
+                />
+                {validationState[fieldId] && <HelpBlock>{validationState[fieldId].join(' ')}</HelpBlock>}
+            </Col>
+        </FormGroup>
+    );
+};
