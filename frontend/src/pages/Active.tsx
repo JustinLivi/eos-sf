@@ -33,13 +33,13 @@ export class Active extends React.Component<ActiveProps<DataType>> {
           }
           data={{
             labels: [],
-            datasets: map(data.active_campaigns, row => ({
+            datasets: data ? map(data.active_campaigns, row => ({
               label: 'Daily Metrics',
               borderColor: '#B6F7C1',
               borderWidth: 1,
               hoverBorderColor: '#B6F7C1',
               data: [65, 59, 80, 81, 56, 55, 40]
-            }))
+            })) : []
           }}
         />
         <div className='eos-header-holder-small'>
