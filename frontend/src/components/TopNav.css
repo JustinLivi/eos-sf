@@ -1,0 +1,29 @@
+.navbar.navbar-default {
+    height: 6vh;
+    background-color: #373540;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar.navbar-default .container-fluid,
+.navbar.navbar-default .container-fluid .navbar-nav,
+.navbar.navbar-default .container-fluid .navbar-header,
+.navbar.navbar-default .container-fluid .li.active {
+    height: 100%;
+}
+
+.navbar.navbar-default .container-fluid .navbar-header {
+    padding: 0.5vh;
+    margin: 0 1rem;
+}
+
+.navbar.navbar-default .container-fluid .navbar-header .li.active {
+    height: 100%;
+    background-color: #63686E;
+}
+
+.navbar.navbar-default .navbar-nav li.active a  {
+    height: 100%;
+    background-color: #63686E;
+    color: #B6F7C1;
+}
