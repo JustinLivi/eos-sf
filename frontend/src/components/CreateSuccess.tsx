@@ -51,7 +51,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
         <Col sm={12} className="button-holder">
           <LinkContainer to="/active/">
             <Button>
-              <span>My Campaigns </span>
+              <span>My Bounties </span>
               <img src={buttonArrow} className="cta-arrow" />
             </Button>
           </LinkContainer>

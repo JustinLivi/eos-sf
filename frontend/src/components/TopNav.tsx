@@ -20,7 +20,7 @@ export const TopNav: React.SFC<NavProps> = props => (
       </Navbar.Header>
       <Nav pullRight={true} className="create-campaign">
         <LinkContainer to="/create/">
-          <NavItem>New Campaign</NavItem>
+          <NavItem>New Bounty</NavItem>
         </LinkContainer>
       </Nav>
     </Col>

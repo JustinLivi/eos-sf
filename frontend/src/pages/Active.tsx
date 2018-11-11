@@ -43,7 +43,7 @@ export class Active extends React.Component<ActiveProps<DataType>> {
           }}
         />
         <div className="eos-header-holder-small">
-          <h1 className="header">My Active Campaigns</h1>
+          <h1 className="header">My Active Bounties</h1>
         </div>
         <CampaignTable data={data.active_campaigns} />
       </MainLayout>

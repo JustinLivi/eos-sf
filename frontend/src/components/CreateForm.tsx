@@ -18,7 +18,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
   <React.Fragment>
     <div className="eos-header-holder">
       <div className="bracket top-bracket" />
-      <h1 className="header">Create Campaign</h1>
+      <h1 className="header">Create Bounty</h1>
       <div className="bracket bottom-bracket" />
     </div>
     <Form horizontal={true}>
@@ -27,7 +27,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
         fieldId="AdName"
         fieldLabel={'Ad Name'}
         inputProps={{
-          type: 'text',
+          type: 'text'
         }}
       />
       <FormControlWithValidation
@@ -35,7 +35,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
         fieldId="ConversionName"
         fieldLabel={'Conversion Name'}
         inputProps={{
-          type: 'text',
+          type: 'text'
         }}
       />
       <FormControlWithValidation
@@ -43,13 +43,14 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
         fieldId="ConversionType"
         fieldLabel={'Conversion Type'}
         inputProps={{
-          type: 'text',
+          type: 'text'
         }}
       />
       <FormGroup>
         <Col sm={12} className="button-holder">
           <Button onClick={props.onSubmit} disabled={props.disabled}>
-            <span>Create  </span><img src={buttonArrow} className="cta-arrow" />
+            <span>Create </span>
+            <img src={buttonArrow} className="cta-arrow" />
           </Button>
         </Col>
       </FormGroup>
