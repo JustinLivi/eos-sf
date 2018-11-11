@@ -39,6 +39,9 @@ cleos wallet import -n eosiomain --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4
 echo "=== setup wallet: pactwal ==="
 # key for eosio account and export the generated password to a file for unlocking wallet later
 cleos wallet create -n pactwal --to-console | tail -1 | sed -e 's/^"//' -e 's/"$//' > notechain_wallet_password.txt
+
+cat notechain_wallet_password.txt
+
 # Owner key for pactwal wallet
 cleos wallet import -n pactwal --private-key 5JpWT4ehouB2FF9aCfdfnZ5AwbQbTtHBAwebRXt94FmjyhXwL4K
 # Active key for pactwal wallet
