@@ -16,7 +16,7 @@ export class Browse extends React.Component<{}, BrowseState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      noteTable: [], // to store the table rows from smart contract
+      noteTable: [] // to store the table rows from smart contract
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -50,7 +50,7 @@ export class Browse extends React.Component<{}, BrowseState> {
         actionName = 'update';
         actionData = {
           user: account,
-          note,
+          note
         };
         break;
       default:
@@ -64,29 +64,29 @@ export class Browse extends React.Component<{}, BrowseState> {
       rpc,
       signatureProvider,
       textDecoder: new TextDecoder(),
-      textEncoder: new TextEncoder(),
+      textEncoder: new TextEncoder()
     });
     try {
       const result = await api.transact(
         {
           actions: [
             {
-              account: 'notechainacc',
+              account: 'esoio',
               name: actionName,
               authorization: [
                 {
                   actor: account,
-                  permission: 'active',
-                },
+                  permission: 'active'
+                }
               ],
-              data: actionData,
-            },
-          ],
+              data: actionData
+            }
+          ]
         },
         {
           blocksBehind: 3,
-          expireSeconds: 30,
-        },
+          expireSeconds: 30
+        }
       );
 
       console.log(result);
@@ -106,10 +106,10 @@ export class Browse extends React.Component<{}, BrowseState> {
     rpc
       .get_table_rows({
         json: true,
-        code: 'notechainacc', // contract who owns the table
-        scope: 'notechainacc', // scope of the table
-        table: 'notestruct', // name of the table as specified by the contract abi
-        limit: 100,
+        code: 'eosio', // contract who owns the table
+        scope: 'eosio', // scope of the table
+        table: 'creators', // name of the table as specified by the contract abi
+        limit: 100
       })
       .then(result => this.setState({ noteTable: result.rows }));
   }
