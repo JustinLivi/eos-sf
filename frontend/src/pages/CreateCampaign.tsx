@@ -10,8 +10,8 @@ import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
-const owner = "adchainacc";
-const creator = "useraaaaaaaa";
+const owner = "pactacc";
+const user = "useraaaaaaaa";
 const endpoint = 'http://localhost:8888';
 const privateKey = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
 
@@ -90,14 +90,14 @@ export class CreateCampaign extends React.Component<
           actions: [
             {
               account: owner,
-              name: 'newcampaign',
+              name: 'newpact',
               authorization: [
                 {
-                  actor: creator,
+                  actor: user,
                   permission: 'active'
                 }
               ],
-              data: {creator: creator, campaign_name: this.state.formValues.AdName, target_users: this.state.formValues.ConversionName}
+              data: {user: user, name: this.state.formValues.AdName, complete_threshold: this.state.formValues.ConversionName}
             }
           ]
         },
