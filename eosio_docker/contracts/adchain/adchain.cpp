@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/asset.hpp>
 
@@ -18,7 +19,7 @@ using namespace eosio;
 // Replace the contract class name when you start your own project
 CONTRACT adchain : public eosio::contract {
   private:
-    TABLE ad_campaign {
+    struct ad_campaign {
       uint64_t      unique_id; // this is a uuid
       uint64_t      target_users; // number of users this campaign will sign up
       uint64_t      activated_users; // number of users already activated through this campaign
@@ -31,7 +32,7 @@ CONTRACT adchain : public eosio::contract {
     TABLE creators {
       name creator;
       uint64_t campaigns_counter;
-      std::vector<ad_campaign> active_campaigns; // has many campaigns
+      std::unordered_map<uint64_t, ad_campaign> active_campaigns; // has many campaigns
       auto primary_key() const { return creator.value; }
       // constructor - set counter to zero
       creators(): campaigns_counter(0) {}
@@ -55,10 +56,16 @@ CONTRACT adchain : public eosio::contract {
       require_auth(creator);
 
       users_table users(_code, _code.value);
-      auto iterator = users.find(creator.value);
-      eosio_assert(iterator == users.end(), "User must create an account before incrementing users");
+      auto user = users.find(creator.value);
+      eosio_assert(user != users.end(), "User must create an account before incrementing users");
 
+      users.modify( user, _self, [&]( auto& s ) {
+         auto campaign = s.active_campaigns.find(campaign_id);
+         eosio_assert(campaign != user->active_campaigns.end(), "Failed to find campaign");
 
+         campaign->second.activated_users++;
+         printf("Increment successfully incremented active_users to %u", campaign->second.activated_users);
+      });
     }
 };
 
