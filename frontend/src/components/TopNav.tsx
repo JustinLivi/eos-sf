@@ -4,13 +4,14 @@ import * as React from 'react';
 import { Col, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import fett from '../media/fett.png';
 import logoPng from '../media/logo.png';
 
 export interface NavProps {}
 
 export const TopNav: React.SFC<NavProps> = props => (
   <Navbar fluid={true}>
-    <Col sm={3} className="align-header">
+    <Col className="align-header">
       <Navbar.Header>
         <LinkContainer to="/active/">
           <Navbar.Brand>
@@ -18,14 +19,19 @@ export const TopNav: React.SFC<NavProps> = props => (
           </Navbar.Brand>
         </LinkContainer>
       </Navbar.Header>
-      <Nav pullRight={true} className="create-campaign">
+      <Nav className="create-campaign">
         <LinkContainer to="/create/">
-          <NavItem>New Bounty</NavItem>
+          <NavItem>
+            <span>New Bounty</span>
+          </NavItem>
         </LinkContainer>
       </Nav>
     </Col>
-    <Nav pullRight={true}>
-      <NavItem>User 1</NavItem>
+    <Nav pullRight={true} className="user-info">
+      <NavItem>
+        <img src={fett} className="user-portrait" />
+        <span className="username">Boba</span>
+      </NavItem>
     </Nav>
   </Navbar>
 );
