@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import buttonArrow from '../media/cta.png';
 import { TextWithValidation } from './inputs/TextWithValidation';
 import { FormProps } from './withValidation';
-
-import buttonArrow from '../media/cta.png';
 
 export interface CreateSuccessFields {
   AdName: any;
@@ -34,7 +33,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
       <TextWithValidation
         {...props}
         fieldId="ConversionName"
-        fieldLabel={'Conversion Name'}
+        fieldLabel={'Conversion Goal'}
         inputProps={{
           type: 'text'
         }}

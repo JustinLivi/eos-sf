@@ -2,9 +2,9 @@
   "name": "nodeserver",
   "version": "1.0.0",
   "description": "Server to proxy metric tracking",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,9 +18,10 @@
     "typescript": "^3.1.6"
   },
   "dependencies": {
+    "ajv": "^6.5.5",
     "eosjs": "20.0.0-beta2",
     "express": "^4.16.4",
-    "text-encoding": "^0.7.0",
-    "ajv": "^6.5.5"
+    "shelljs": "^0.8.2",
+    "text-encoding": "^0.7.0"
   }
 }

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 
+import buttonArrow from '../media/cta.png';
 import { FormControlWithValidation } from './inputs/FormControlWithValidation';
 import { FormProps } from './withValidation';
-
-import buttonArrow from '../media/cta.png';
 
 export interface CreateFormFields {
   AdName: any;
@@ -33,7 +32,7 @@ export const CreateForm: React.SFC<CreateFormProps> = props => (
       <FormControlWithValidation
         {...props}
         fieldId="ConversionName"
-        fieldLabel={'Conversion Name'}
+        fieldLabel={'Conversion Goal'}
         inputProps={{
           type: 'text'
         }}

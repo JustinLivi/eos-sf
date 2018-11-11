@@ -1,5 +1,6 @@
 import './CreateCampaign.css';
 
+import { Api, JsonRpc, JsSignatureProvider, RpcError } from 'eosjs';
 import * as React from 'react';
 import { BarLoader } from 'react-spinners';
 import { validate } from 'validate.js';
@@ -9,11 +10,16 @@ import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
+const owner = 'adchainacc';
+const creator = 'useraaaaaaaa';
+const endpoint = 'http://localhost:8888';
+const privateKey = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
+
 export enum CreateCampaignStates {
   Unsubmitted,
   Submitting,
   Submitted,
-  Failed,
+  Failed
 }
 
 export interface CreateCampaignProps {}
@@ -35,13 +41,13 @@ export class CreateCampaign extends React.Component<
       formValues: {
         AdName: undefined,
         ConversionName: undefined,
-        ConversionType: undefined,
+        ConversionType: undefined
       },
       validationState: {
         AdName: null,
         ConversionName: null,
-        ConversionType: null,
-      },
+        ConversionType: null
+      }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -50,30 +56,81 @@ export class CreateCampaign extends React.Component<
   validateFields(fields: Partial<CreateFormFields>) {
     return validate(fields, {
       AdName: { presence: { allowEmpty: false } },
-      ConversionName: { presence: { allowEmpty: false } },
-      ConversionType: { presence: { allowEmpty: false } },
+      ConversionName: {
+        presence: { allowEmpty: false },
+        numericality: {
+          onlyInteger: true,
+          greaterThan: 0
+        }
+      },
+      ConversionType: { presence: { allowEmpty: false } }
     });
   }
 
   async handleSubmit() {
+    // const { invalidateCache } = this.props;
     const validationState = this.validateFields(this.state.formValues);
     if (validationState) {
       this.setState(prev => ({
         ...prev,
-        validationState,
+        validationState
       }));
     } else {
       this.setState(prev => ({
         ...prev,
-        state: CreateCampaignStates.Submitting,
+        state: CreateCampaignStates.Submitting
       }));
-      // TODO: replace with api call
-      await new Promise(resolve => {
-        window.setTimeout(resolve, 1000);
-      });
+    }
+
+    const rpc = new JsonRpc(endpoint);
+    const signatureProvider = new JsSignatureProvider([privateKey]);
+    const api = new Api({
+      rpc,
+      signatureProvider,
+      textDecoder: new TextDecoder(),
+      textEncoder: new TextEncoder()
+    });
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: owner,
+              name: 'newcampaign',
+              authorization: [
+                {
+                  actor: creator,
+                  permission: 'active'
+                }
+              ],
+              data: {
+                creator: creator,
+                campaign_name: this.state.formValues.AdName,
+                target_users: this.state.formValues.ConversionName
+              }
+            }
+          ]
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30
+        }
+      );
+
       this.setState(prev => ({
         ...prev,
-        state: CreateCampaignStates.Submitted,
+        state: CreateCampaignStates.Submitted
+      }));
+      console.log(result);
+    } catch (e) {
+      console.log('Caught exception: ' + e);
+      if (e instanceof RpcError) {
+        console.log(JSON.stringify(e.json, null, 2));
+      }
+
+      this.setState(prev => ({
+        ...prev,
+        state: CreateCampaignStates.Unsubmitted
       }));
     }
   }
@@ -83,13 +140,13 @@ export class CreateCampaign extends React.Component<
       ...prev,
       formValues: {
         ...prev.formValues,
-        [fieldId]: value,
+        [fieldId]: value
       },
       validationState: {
         AdName: null,
         ConversionName: null,
-        ConversionType: null,
-      },
+        ConversionType: null
+      }
     }));
   }
 
@@ -98,11 +155,11 @@ export class CreateCampaign extends React.Component<
     return (
       <MainLayout activePage={Pages.creating}>
         <BarLoader
-          className="loading-bar"
+          className='loading-bar'
           color={'#B6F7C1'}
           loading={state === CreateCampaignStates.Submitting}
         />
-        
+
         {state !== CreateCampaignStates.Submitted ? (
           <CreateForm
             onSubmit={this.handleSubmit}
@@ -119,7 +176,7 @@ export class CreateCampaign extends React.Component<
             values={formValues}
           />
         )}
-        <div className="form-shadow" />
+        <div className='form-shadow' />
       </MainLayout>
     );
   }
