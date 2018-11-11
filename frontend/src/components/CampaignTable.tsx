@@ -3,7 +3,7 @@ import ReactDataGrid from 'react-data-grid';
 
 import { Campaign } from './Store';
 
-import './TopNav.css';
+import './CampaignTable.css';
 
 export interface CampaignTableProps {
   data: Campaign[];
