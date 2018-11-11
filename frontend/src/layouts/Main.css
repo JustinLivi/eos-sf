@@ -1,4 +1,9 @@
 .page-main-body {
-    background-image: url('../media/bg.jpg');
-    min-height: 93vh;
+  background-image: url('../media/bg.jpg');
+  background-size: cover;
+  min-height: 93vh;
+}
+
+.main-content-holder {
+  transform-style: preserve-3d;
 }

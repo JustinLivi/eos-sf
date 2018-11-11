@@ -16,7 +16,7 @@ export const MainLayout: React.SFC<MainLayoutProps> = ({
       <Col sm={3} lg={2} className="nav-holder">
         <Sidebar activePage={activePage} />
       </Col>
-      <Col sm={9} lg={10}>
+      <Col sm={9} lg={10} className="main-content-holder">
         {children}
       </Col>
     </Row>
