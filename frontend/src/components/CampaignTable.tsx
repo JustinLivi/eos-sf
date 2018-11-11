@@ -14,7 +14,7 @@ export const CampaignTable: React.SFC<CampaignTableProps> = ({ data }) => (
       { key: 'target_users', name: 'Target Users' },
       { key: 'activated_users', name: 'Activated Users' }
     ]}
-    rowGetter={(index: number) => data.active_campaigns[index]}
-    rowsCount={data.active_campaigns.length}
+    rowGetter={(index: number) => data && data.active_campaigns ? data.active_campaigns[index] : null}
+    rowsCount={data && data.active_campaigns ? data.active_campaigns.length : 0}
   />
 );

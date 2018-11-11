@@ -50,7 +50,7 @@ export class Store<DataType> extends React.Component<
         table: 'creators', // name of the table as specified by the contract abi
         limit: 100
       })
-      .then(result => this.setState({data: result.rows[0]}));
+      .then(result => result && result.rows && this.setState({data: result.rows[0]}));
   }
 
   componentDidMount() {
