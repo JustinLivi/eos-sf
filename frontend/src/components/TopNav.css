@@ -1,40 +1,78 @@
 .navbar.navbar-default {
-    height: 6vh;
-    background-color: #373540;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 0;
+  top: 0;
+
+  height: 8vh;
+  min-height: 8vh;
+  width: 100vw;
+  background-color: #373540;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 .nav-shadow {
-    width: 100%;
-    height: 6vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    box-shadow: 0px 0px 30px #000;
+  width: 100%;
+  height: 8vh;
+  min-height: 8vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 998;
+  box-shadow: 0px 0px 30px #000;
 }
 
 .navbar.navbar-default .container-fluid,
 .navbar.navbar-default .container-fluid .navbar-nav,
 .navbar.navbar-default .container-fluid .navbar-header,
 .navbar.navbar-default .container-fluid .li.active {
-    height: 100%;
+  height: 100%;
+}
+
+.navbar.navbar-default .navbar-brand {
+  padding: 9px;
 }
 
 .navbar.navbar-default .container-fluid .navbar-header {
-    padding: 0.5vh;
-    margin: 0 1rem;
+  padding: 0.5vh;
+  margin: 0 1rem;
 }
 
 .navbar.navbar-default .container-fluid .navbar-header .li.active {
-    height: 100%;
-    background-color: #63686E;
+  height: 100%;
+  background-color: #63686e;
 }
 
-.navbar.navbar-default .navbar-nav li.active a  {
-    height: 100%;
-    background-color: #63686E;
-    color: #B6F7C1;
+.navbar.navbar-default .navbar-nav li a {
+  height: 100%;
+  color: #b6f7c1;
+  height: 8vh;
+  min-height: 8vh;
+  display: flex;
+  align-items: center;
+}
+
+.navbar.navbar-default .navbar-nav li a span {
+  color: #b6f7c1;
+  text-transform: uppercase;
+}
+
+.navbar.navbar-default .navbar-nav li.active a {
+  background-color: #63686e;
+}
+
+.align-header {
+  padding-left: 0;
+}
+
+.user-portrait {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 1rem;
+}
+.user-info {
+  padding-right: 2rem;
 }

@@ -1,0 +1,57 @@
+.react-grid-Main,
+.react-grid-Container,
+.react-grid-Grid,
+.react-grid-Header,
+.react-grid-HeaderRow,
+.react-grid-HeaderRow div,
+.chartjs-size-monitor,
+.react-grid-HeaderCell,
+.react-grid-Cell,
+.react-grid-Row,
+.react-grid-Canvas {
+  background-color: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none;
+  outline: none;
+}
+
+.react-grid-Main,
+.react-grid-Container,
+.react-grid-Row,
+.react-grid-Grid,
+.react-grid-HeaderRow div {
+  max-width: 790px;
+}
+
+.react-grid-Row div,
+.react-grid-HeaderRow div {
+  max-width: 34%;
+}
+
+.react-grid-Canvas .rdg-selected {
+  border: none;
+  background-color: #b6f7c1;
+  opacity: 0.2;
+}
+
+.react-grid-Row,
+.react-grid-Cell {
+  height: 5rem !important;
+}
+
+.react-grid-Row:nth-child(1) .react-grid-Cell {
+  background-color: #1e1c26;
+}
+
+.react-grid-HeaderRow .react-grid-HeaderCell {
+  font-weight: 100 !important;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #b6f7c1;
+}
+
+.react-grid-Header {
+  background-color: #000;
+}
