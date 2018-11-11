@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { TopNav } from './components/TopNav';
 import { Active } from './pages/Active';
 import { Completed } from './pages/Completed';
+import { CompleteTask } from './pages/CompleteTask';
 import { CreateCampaign } from './pages/CreateCampaign';
 import { DataType } from './store/stateDefinition';
 
@@ -22,6 +23,7 @@ export const App: React.SFC<{}> = () => (
         <Route path='/active/' component={() => <Active />} />
         <Route path='/completed/' component={() => <Completed />} />
         <Route path='/create/' component={() => <CreateCampaign />} />
+        <Route path='/task/' component={() => <CompleteTask />} />
         <Route exact path='/' render={() => <Redirect to='/active/' />} />
       </React.Fragment>
     </React.Fragment>
