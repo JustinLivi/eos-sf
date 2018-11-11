@@ -13,9 +13,11 @@ export const MainLayout: React.SFC<MainLayoutProps> = ({
 }) => (
   <Grid fluid={true} className="page-main-body">
     <Row>
+      <Col sm={3} lg={2} className="nav-placeholder" />
       <Col sm={3} lg={2} className="nav-holder">
         <Sidebar activePage={activePage} />
       </Col>
+
       <Col sm={9} lg={10} className="main-content-holder">
         {children}
       </Col>
