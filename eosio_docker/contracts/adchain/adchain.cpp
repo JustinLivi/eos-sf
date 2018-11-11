@@ -51,7 +51,7 @@ CONTRACT adchain : public eosio::contract {
       _users( receiver, receiver.value ) {}
 
 
-    ACTION increment_users( name creator, uint64_t campaign_id ) {
+    ACTION increment( name creator, uint64_t campaign_id ) {
       require_auth(creator);
 
       users_table users(_code, _code.value);
@@ -63,4 +63,4 @@ CONTRACT adchain : public eosio::contract {
 };
 
 // specify the contract name, and export a public action: update
-EOSIO_DISPATCH( adchain, (increment_users) )
+EOSIO_DISPATCH( adchain, (increment) )
