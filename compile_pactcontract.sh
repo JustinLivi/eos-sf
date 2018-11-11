@@ -1,0 +1,2 @@
+eosio-cpp -abigen "./eosio_docker/contracts/pactcontract/pactcontract.cpp" -o "./eosio_docker/contracts/pactcontract/pactcontract.wasm" --contract "pactcontract"
+docker exec eosio cleos set contract pactacc contracts/pactcontract
