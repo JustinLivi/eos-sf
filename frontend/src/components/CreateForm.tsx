@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Button, Col, Form, FormGroup } from 'react-bootstrap';
 
-import { FormProps, Input } from './Input';
+import { FormControlWithValidation } from './inputs/FormControlWithValidation';
+import { FormProps } from './withValidation';
 
 export interface CreateFormFields {
     AdName: any,
@@ -13,9 +14,30 @@ export type CreateFormProps = FormProps<CreateFormFields>;
 
 export const CreateForm: React.SFC<CreateFormProps> = (props) => (
     <Form horizontal={true}>
-        <Input {...props} fieldId="AdName" fieldLabel={"Ad Name"} />
-        <Input {...props} fieldId="ConversionName" fieldLabel={"Conversion Name"} />
-        <Input {...props} fieldId="ConversionType" fieldLabel={"Conversion Type"} />
+        <FormControlWithValidation
+            {...props}
+            fieldId="AdName"
+            fieldLabel={"Ad Name"}
+            inputProps={{
+                type: 'text'
+            }}
+        />
+        <FormControlWithValidation
+            {...props}
+            fieldId="ConversionName"
+            fieldLabel={"Conversion Name"}
+            inputProps={{
+                type: 'text'
+            }}
+        />
+        <FormControlWithValidation
+            {...props}
+            fieldId="ConversionType"
+            fieldLabel={"Conversion Type"}
+            inputProps={{
+                type: 'text'
+            }}
+        />
         <FormGroup>
             <Col
                 sm={9}
