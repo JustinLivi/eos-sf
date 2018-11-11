@@ -98,6 +98,7 @@ export class CreateCampaign extends React.Component<
     return (
       <MainLayout activePage={Pages.creating}>
         <BarLoader
+          className="loading-bar"
           color={'#B6F7C1'}
           loading={state === CreateCampaignStates.Submitting}
         />
