@@ -22,7 +22,8 @@
     "react-scripts": "^2.1.0",
     "react-select": "^2.1.1",
     "text-encoding": "^0.7.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "validate.js": "^0.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
