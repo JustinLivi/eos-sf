@@ -163,3 +163,8 @@ form .btn-default .cta-arrow {
     left: 20%;
   }
 }
+
+.loading-bar {
+  width: 100%;
+  border-radius: 0;
+}
