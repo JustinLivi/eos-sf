@@ -13,8 +13,8 @@ import { CreateSuccess } from '../components/CreateSuccess';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
-const owner = "pactacc";
-const user = "useraaaaaaaa";
+const owner = 'pactacc';
+const user = 'useraaaaaaaa';
 const endpoint = 'http://localhost:8888';
 const privateKey = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
 
@@ -165,7 +165,7 @@ export class UnboundCreateCampaign extends React.Component<
     return (
       <MainLayout activePage={Pages.creating}>
         <BarLoader
-          className='loading-bar'
+          className="loading-bar"
           color={'#B6F7C1'}
           loading={state === CreateCampaignStates.Submitting}
         />
@@ -186,7 +186,7 @@ export class UnboundCreateCampaign extends React.Component<
             values={formValues}
           />
         )}
-        <div className='form-shadow' />
+        <div className="form-shadow" />
       </MainLayout>
     );
   }

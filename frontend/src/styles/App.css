@@ -11,6 +11,7 @@ a {
 
 body {
   background: #1e1c26 !important;
+  transform-style: preserve-3d;
 }
 
 h1,
@@ -31,3 +32,79 @@ button {
 }
 
 /* document color */
+
+.slide-holder {
+  position: fixed;
+  z-index: 20000;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  animation: wipe-left 0.5s 3s ease-in-out both;
+}
+.slide-inner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('../media/bg.jpg');
+  background-size: cover;
+}
+
+.slide-title h1 {
+  font-size: 8rem;
+  width: 50wv;
+  animation: wipe-in-left 2s 1s linear both;
+}
+
+.slide-title h1.contractor {
+  font-size: 6rem;
+}
+
+.slide-accent {
+  width: 50vw;
+  height: 11vw;
+  background-image: url('../media/slide-accent.png');
+  background-size: 100% 100%;
+  animation: wipe-in-right 2s 1s linear both;
+}
+
+@keyframes wipe-left {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+}
+@keyframes wipe-in-left {
+  from {
+    transform: translate3d(5%, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  10% {
+    transform: translate3d(0, 0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  to {
+    transform: translate3d(-5%, 0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+@keyframes wipe-in-right {
+  from {
+    transform: translate3d(-5%, 0, 0);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+  10% {
+    transform: translate3d(0, 0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  to {
+    transform: translate3d(5%, 0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
