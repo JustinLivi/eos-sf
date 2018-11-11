@@ -169,3 +169,11 @@ form .btn-default .cta-arrow {
   width: 100%;
   border-radius: 0;
 }
+.label-text-pair .col-sm-9 {
+  padding-top: 7px;
+}
+.label-text-pair .col-sm-9 div {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 200;
+}
