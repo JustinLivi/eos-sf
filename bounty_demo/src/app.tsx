@@ -29,7 +29,7 @@ export class App extends React.Component<{}, CompleteTaskState> {
     }));
     try {
       // hardcoded for simplicity
-      await fetch('http://localhost:3002/useraaaaaaaa/0', {
+      await fetch('http://localhost:3002/useraaaaaaaa/1', {
         method: 'post'
       });
       this.setState({
