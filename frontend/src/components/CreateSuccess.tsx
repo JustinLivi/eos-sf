@@ -22,7 +22,7 @@ export const CreateSuccess: React.SFC<CreateSuccessProps> = props => (
       <h1 className="header">Bounty Created</h1>
       <div className="bracket bottom-bracket" />
     </div>
-    <Form horizontal={true}>
+    <Form horizontal={true} className="label-text-pair">
       <TextWithValidation
         {...props}
         fieldId="AdName"
