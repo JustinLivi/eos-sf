@@ -51,7 +51,7 @@ export class UnboundActive extends React.Component<AllProps> {
           data={{
             labels: [],
             datasets: map(data.active_pacts, row => ({
-              label: row.campaign_name,
+              label: row.name,
               borderColor: '#B6F7C1',
               borderWidth: 1,
               hoverBorderColor: '#B6F7C1',

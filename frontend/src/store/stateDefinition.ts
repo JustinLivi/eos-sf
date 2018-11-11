@@ -2,11 +2,7 @@ export interface Campaign {
   unique_id: number;
   complete_threshold: number;
   activated_times: number;
-  campaign_name: string;
-  user_reward: {
-    symbol: string;
-    amount: number;
-  };
+  name: string;
 }
 
 export enum CacheStatus {

@@ -48,9 +48,9 @@ export class UnboundCreateCampaign extends React.Component<
     this.state = {
       state: CreateCampaignStates.Unsubmitted,
       formValues: {
-        AdName: undefined,
-        ConversionName: undefined,
-        ConversionType: undefined
+        AdName: 'Dragon Slaying',
+        ConversionName: '10',
+        ConversionType: 'Unicorn Tears'
       },
       validationState: {
         AdName: null,
@@ -165,7 +165,7 @@ export class UnboundCreateCampaign extends React.Component<
     return (
       <MainLayout activePage={Pages.creating}>
         <BarLoader
-          className="loading-bar"
+          className='loading-bar'
           color={'#B6F7C1'}
           loading={state === CreateCampaignStates.Submitting}
         />
@@ -186,7 +186,7 @@ export class UnboundCreateCampaign extends React.Component<
             values={formValues}
           />
         )}
-        <div className="form-shadow" />
+        <div className='form-shadow' />
       </MainLayout>
     );
   }

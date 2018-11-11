@@ -42,13 +42,14 @@ export class UnboundCompleteTask extends React.Component<
   }
 
   componentDidMount() {
-    const { shouldInvalidateCache, shouldFetchTable, cacheStatus } = this.props;
+    const { shouldFetchTable, cacheStatus } = this.props;
     if (cacheStatus !== CacheStatus.FETCHING) {
       shouldFetchTable();
     }
   }
 
   async handleSubmit() {
+    const { shouldInvalidateCache } = this.props;
     this.setState(prev => ({
       ...prev,
       state: CompleteTaskStates.Submitting
@@ -62,6 +63,7 @@ export class UnboundCompleteTask extends React.Component<
         state: CompleteTaskStates.Submitted,
         completed: true
       });
+      shouldInvalidateCache();
     } catch {
       this.setState(prev => ({
         ...prev,
