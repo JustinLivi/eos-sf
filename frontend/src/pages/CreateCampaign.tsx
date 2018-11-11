@@ -6,6 +6,10 @@ import { CreateForm, CreateFormFields } from '../components/CreateForm';
 import { Pages } from '../components/Sidebar';
 import { MainLayout } from '../layouts/Main';
 
+import bracket from '../media/header-holder.png';
+
+import './CreateCampaign.css';
+
 export enum CreateCampaignStates {
     Unsubmitted,
     Submitting,
@@ -88,7 +92,11 @@ export class CreateCampaign extends React.Component<CreateCampaignProps, CreateC
         const { state, validationState, formValues } = this.state;
         return (
             <MainLayout activePage={Pages.creating}>
-                <h1>Create Campaign</h1>
+                <div className="eos-header-holder">
+                    <div className="bracket top-bracket"></div>
+                    <h1 className="header">Create Campaign</h1>
+                    <div className="bracket bottom-bracket"></div>
+                </div>
                 <BarLoader loading={state === CreateCampaignStates.Submitting} />
                 <CreateForm
                     onSubmit={this.handleSubmit}
